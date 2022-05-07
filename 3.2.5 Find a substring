@@ -1,0 +1,26 @@
+public class Solution {
+    public static void main(String[] args) {
+        System.out.println(getPartOfString("CodeGym is the best place to learn Java."));
+    }
+
+    public static String getPartOfString(String string) {
+        if (string == null) {
+            throw new StringTooShortException();
+        }
+
+        String s = "";
+        String[] array = new String[0];
+        array = string.split(" ");
+        if (array.length < 5)
+            throw new StringTooShortException();
+        for (int i = 1; i <= 4; i++) {
+            s += " " + array[i];
+        }
+        return s.trim();
+    }
+
+    public static class StringTooShortException extends RuntimeException {
+        public StringTooShortException() {
+        }
+    }
+}

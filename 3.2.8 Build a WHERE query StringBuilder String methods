@@ -1,0 +1,26 @@
+public class Solution {
+    public static void main(String[] args) {
+        Map<String, String> map = new HashMap<>();
+        map.put("name", "Johnson");
+        map.put("country", "United States");
+        map.put("city", "Los Angeles");
+        map.put("age", null);
+        System.out.println(getQuery(map));
+    }
+
+    public static String getQuery(Map<String, String> params) {
+        StringBuilder str = new StringBuilder();
+
+        for (String s : params.keySet()) {
+            String value = params.get(s);
+            if (value == null) {
+                continue;
+            }
+            if (str.toString().length() != 0) {
+                str.append(" and ");
+            }
+            str.append(s + " = '" + value + "'");
+        }
+        return str.toString();
+    }
+}
